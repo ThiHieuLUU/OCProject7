@@ -45,7 +45,7 @@ def get_total_cost(selection):
     return sum([item[1] for item in selection])
 
 
-def force_brute(list_of_actions, total_cost_max):
+def brute_force(list_of_actions, total_cost_max):
     """Generate all combinations of actions.
 
     For each combination, calculate the total cost and the total profit to take the best solution
@@ -79,7 +79,7 @@ def force_brute(list_of_actions, total_cost_max):
 
 if __name__ == '__main__':
     actions = read_file('20_actions.txt')
-    sol = force_brute(actions, 500)
-    print(f'solution: {sol}')
+    sol = brute_force(actions, 500)
+    print(f'Brute force solution: {sol}')
     print(f'Total cost: {get_total_cost(sol)}')
     print(f'Total profit: {get_total_profit(sol)}')
