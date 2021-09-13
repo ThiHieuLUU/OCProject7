@@ -131,7 +131,7 @@ def save_file(file_name_to_save, solution):
         file.write(f'Total profit: {get_total_profit(solution)}\n')
 
 
-def get_solution(action_file, total_cost_max):
+def save_solution_to_file(action_file, total_cost_max, method):
     """Get solution from brute force method."""
 
     if ".txt" in action_file:
@@ -141,10 +141,12 @@ def get_solution(action_file, total_cost_max):
     else:
         raise "File not found."
 
-    solution = brute_force(actions, total_cost_max)
+    solution = method(actions, total_cost_max)
 
-    # Create a file name to save output from the input file name.
-    file_name_to_save = action_file.split(".")[0].replace("input/", "output/") + "_brute_force.txt"
+    # Create a file name to save output from the input file name and method resolution selected.
+    file_name_to_save = action_file.split(".")[0].replace("input/", "output/") \
+                        + "_" + f'{method.__name__}' + ".txt"
+
     save_file(file_name_to_save, solution)
     print(f'See the result in the file: {file_name_to_save}')
 
@@ -152,5 +154,5 @@ def get_solution(action_file, total_cost_max):
 if __name__ == '__main__':
     total_cost_max = 500
     action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv): ")
-
-    get_solution(action_file, total_cost_max)
+    method = brute_force
+    save_solution_to_file(action_file, total_cost_max, method)
