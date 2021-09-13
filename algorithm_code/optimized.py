@@ -1,6 +1,8 @@
-"""Optimal solution for action problem is resolved by dynamic programming method."""
+"""In this module, dynamic programming  method is implemented to solve problem of buying
+actions. """
 
-import bruteforce
+
+from info_treatement import save_solution_to_file
 
 
 def dynamic_programming(list_of_actions, total_cost_max):
@@ -57,4 +59,4 @@ if __name__ == '__main__':
     total_cost_max = 500
     action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv): ")
     method = dynamic_programming
-    bruteforce.save_solution_to_file(action_file, total_cost_max, method)
+    save_solution_to_file(action_file, total_cost_max, method)
