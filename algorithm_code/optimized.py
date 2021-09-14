@@ -1,8 +1,11 @@
 """In this module, dynamic programming  method is implemented to solve problem of buying
 actions. """
 
+import os
 
-from info_treatement import save_solution_to_file
+from algorithm_code.data_treatement import save_solution_to_file
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def dynamic_programming(list_of_actions, total_cost_max):
@@ -55,8 +58,37 @@ def dynamic_programming(list_of_actions, total_cost_max):
     return selection
 
 
-if __name__ == '__main__':
+def dynamic_programming_for_20_actions():
+    """Solve problem with 20 actions."""
+
     total_cost_max = 500
-    action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv): ")
+    action_file = input("Please enter file name (/input/20_actions.txt or /input/20_actions.csv): ")
+    action_file = SCRIPT_DIR + action_file
     method = dynamic_programming
     save_solution_to_file(action_file, total_cost_max, method)
+
+
+def dynamic_programming_for_dataset_testing():
+    """Solve problem with actions in dataset after cleaning."""
+
+    total_cost_max = 500 * 100
+    action_file = input(
+        "Please enter file name (/input/dataset1_Python+P7_cleaned.csv or "
+        "/input/dataset2_Python+P7_cleaned.csv): "
+    )
+
+    action_file = SCRIPT_DIR + action_file
+    method = dynamic_programming
+    save_solution_to_file(action_file, total_cost_max, method)
+
+
+if __name__ == '__main__':
+    which_dataset = int(input("Select dataset: 1 - for 20 actions, 2 - for Sienna's data set: "))
+
+    # Following the choice of dataset, the corresponding solution will be given.
+    if which_dataset == 1:
+        dynamic_programming_for_20_actions()
+    elif which_dataset == 2:
+        dynamic_programming_for_dataset_testing()
+    else:
+        raise "Select is not compatible."

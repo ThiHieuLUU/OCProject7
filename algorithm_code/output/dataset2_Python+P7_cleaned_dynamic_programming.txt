@@ -1,0 +1,24 @@
+name, price, profit 
+('Share-ECAQ', 3166, 1250.2534)
+('Share-IXCI', 2632, 1037.008)
+('Share-FWBE', 1830, 729.1042)
+('Share-ZOFA', 2532, 1007.2296)
+('Share-PLLK', 1994, 795.8054)
+('Share-LXZU', 424, 167.6496)
+('Share-YFVZ', 2255, 881.705)
+('Share-ANFX', 3854, 1531.206)
+('Share-PATS', 2770, 1107.1689999999999)
+('Share-SCWM', 642, 244.602)
+('Share-NDKR', 3306, 1319.4246)
+('Share-ALIY', 2908, 1161.1644)
+('Share-JWGF', 4869, 1944.1916999999999)
+('Share-JGTW', 3529, 1391.4847)
+('Share-FAPS', 3257, 1287.8178)
+('Share-VCAX', 2742, 1069.1058)
+('Share-LFXB', 1483, 590.0857)
+('Share-DWSK', 2949, 1160.4315)
+('Share-XQII', 1342, 530.2242)
+('Share-ROOM', 1506, 590.8038)
+
+Total cost: 49990
+Total profit: 19796.4664
