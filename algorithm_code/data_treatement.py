@@ -129,7 +129,6 @@ def save_solution_to_file(action_file, total_cost_max, method):
     elif "dataset" in action_file:
         print(action_file)
         actions = read_cleaned_dataset(action_file)
-        print(actions)
     else:
         raise "File not found."
 

@@ -43,7 +43,7 @@ def brute_force_for_20_actions():
     """Solve problem with 20 actions."""
 
     total_cost_max = 500
-    action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv): ")
+    action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv or input/data_sandrine.txt): ")
     method = brute_force
     save_solution_to_file(action_file, total_cost_max, method)
 
