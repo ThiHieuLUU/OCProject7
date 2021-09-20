@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: data_treatement.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="data_treatement.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               data_treatement.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F401:</strong> 'os' imported but unused
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="data_treatement.source.html#l2">
+                  <tt><i>2</i> <span class="kn">import</span> <span class="nn">os</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  12
+               </span>
+               <strong>E501:</strong> line too long (92 > 79 characters)
+               
+                  (and 8 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l17">
+                  <tt><i>17</i> <span class="sd">     - profit of an action is calculated by multiplying action cost with action profit value</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l31">
+                  <tt><i>31</i>         <span class="c1"># Transform cost from string to float, if using dymanic_programming, it must be interger</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l36">
+                  <tt><i>36</i>         <span class="c1"># First, transform percentage to value, for exemple: 5% becomes 5*0.01 = 0.05</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l39">
+                  <tt><i>39</i>         <span class="c1"># For exemple, an action costs 20 euros with profit 5% so the total profil is 20 * 0.05</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l56">
+                  <tt><i>56</i> <span class="sd">     - profit of an action is calculated by multiplying action cost with action profit value</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l71">
+                  <tt><i>71</i>         <span class="p">(</span><span class="n">action</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">action</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">action</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">action</span><span class="p">[</span><span class="s1">&#39;profit&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">percentage_value</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l79">
+                  <tt><i>79</i>     <span class="sd">&quot;&quot;&quot;Read then transform data to ready to use for the resolution of different methods.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l81">
+                  <tt><i>81</i> <span class="sd">    In particular, for dynamic programming method, cost of each action must be an integer.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l82">
+                  <tt><i>82</i> <span class="sd">    Therefore, price must be multiplied with 100 in this case to become an integer.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l92">
+                  <tt><i>92</i>         <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;profit&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l137">
+                  <tt><i>137</i>     <span class="c1"># Create a file name to save output from the input file name and method resolution selected.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="data_treatement.source.html#l138">
+                  <tt><i>138</i>     <span class="n">file_name_to_save</span> <span class="o">=</span> <span class="n">action_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;input/&quot;</span><span class="p">,</span> <span class="s2">&quot;output/&quot;</span><span class="p">)</span> \</tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E127">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E127:</strong> continuation line over-indented for visual indent
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="data_treatement.source.html#l139">
+                  <tt><i>139</i>                         <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">method</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

@@ -1,5 +1,7 @@
 """In this module, greedy method is implemented to solve problem of buying actions. """
 import os
+import time
+
 from data_treatement import save_solution_to_file
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +21,7 @@ def greedy(list_of_actions, total_cost_max):
     This method can be applied with total_cost_max and cost of each action are float.
     The profit is sorted in descending order and added in the solution in function of the cost reminder.
     """
-
+    start = time.perf_counter()
     list_of_actions_sorted = sort_actions(list_of_actions)
     total_cost = 0
     total_profit = 0
@@ -36,6 +38,9 @@ def greedy(list_of_actions, total_cost_max):
             total_cost = total_cost + action_cost
             total_profit = total_profit + action_profit
         index = index + 1
+
+    end = time.perf_counter()
+    print(f'Greedy takes {end - start} seconds')
     return selection
 
 

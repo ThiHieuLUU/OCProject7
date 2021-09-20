@@ -1,6 +1,7 @@
 """In this module, dynamic programming  method is implemented to solve problem of buying
 actions. """
-from datetime import datetime
+
+import time
 import os
 
 # from algorithm_code.data_treatement import save_solution_to_file
@@ -27,7 +28,7 @@ def dynamic_programming(list_of_actions, total_cost_max):
     - problem with (i - 1) actions and total_cost_max = j - W[i]
     )
     """
-    b = datetime.now()
+    start = time.perf_counter()
     matrix = [[0 for x in range(total_cost_max + 1)] for x in range(len(list_of_actions) + 1)]
 
     for i in range(1, len(list_of_actions) + 1):
@@ -56,7 +57,8 @@ def dynamic_programming(list_of_actions, total_cost_max):
 
         n -= 1
     # total_profit = matrix[-1][-1]
-    print(f'Dynamic programming take {datetime.now() - b} seconds')
+    end = time.perf_counter()
+    print(f'Dynamic programming takes {end - start} seconds')
     return selection
 
 

@@ -1,5 +1,7 @@
 """In this module, brute force method is implemented to solve problem of buying actions."""
 
+import time
+
 from data_treatement import (
     get_total_profit,
     get_total_cost,
@@ -13,6 +15,7 @@ def brute_force(list_of_actions, total_cost_max):
     For each combination, calculate the total cost and the total profit to take the best solution
     under the constraint: maximize the profit while the cost doesn't exceed a given value.
     """
+    start = time.perf_counter()
 
     nbr_of_action_types = len(list_of_actions)
     nbr_of_combinations = 2 ** nbr_of_action_types
@@ -36,6 +39,9 @@ def brute_force(list_of_actions, total_cost_max):
         if get_total_profit(combination) > get_total_profit(solution):
             if get_total_cost(combination) <= total_cost_max:
                 solution = combination
+
+    end = time.perf_counter()
+    print(f'Brute force takes {end - start} seconds')
     return solution
 
 
@@ -43,7 +49,7 @@ def brute_force_for_20_actions():
     """Solve problem with 20 actions."""
 
     total_cost_max = 500
-    action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv or input/data_sandrine.txt): ")
+    action_file = input("Please enter file name (input/20_actions.txt or input/20_actions.csv): ")
     method = brute_force
     save_solution_to_file(action_file, total_cost_max, method)
 
