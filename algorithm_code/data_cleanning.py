@@ -1,10 +1,14 @@
-import csv
+"""In this module, dataset will be cleaned by removing duplicated share's name, negative price
+or negative profit.
+"""
 
 from os.path import exists as file_exists
 import pandas as pd
 
 
 def clean_data(name_file):
+    """Clean dataset from a file then save cleaned data to another file."""
+
     df = pd.read_csv(name_file)
     df_no_duplicates = df.drop_duplicates(subset=['name'])
     df_positive = df_no_duplicates[

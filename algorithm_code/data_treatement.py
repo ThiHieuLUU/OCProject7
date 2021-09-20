@@ -1,20 +1,23 @@
+"""In this module, some functionalities used for different algorithms will be implemented,
+such as: read data from a file, save data to a file or calculate the total cost, the total profit.
+"""
+
 import csv
-import os
 from os.path import exists as file_exists
 
 
 def read_text_file(file_name):
-    """Read a text file about actions' information. The format of the file:
+    """Read a text file about shares' information. The format of the file:
 
-    Column1: action's name
-    Column2: cost of an action (in euro)
-    Column3: profit of an action after 2 years (in percentage)
+    Column1: share's name
+    Column2: cost of a share (in euro)
+    Column3: profit of a share after 2 years (in percentage)
 
     After reading, return information under a list of tuple like below:
-    [("Action-1", 20, 1), ("Action-2", 30, 3), ...]
+    [("share-1", 20, 1), ("share-2", 30, 3), ...]
     Here:
-     - cost of an action is transformed from string to int
-     - profit of an action is calculated by multiplying action cost with action profit value
+     - cost of a share is transformed from string to int
+     - profit of a share is calculated by multiplying share cost with share profit value
     """
 
     percentage_str = "%"
@@ -36,24 +39,24 @@ def read_text_file(file_name):
         # First, transform percentage to value, for exemple: 5% becomes 5*0.01 = 0.05
         line[2] = float(line[2]) * percentage_value
         # Then calculate the real profit
-        # For exemple, an action costs 20 euros with profit 5% so the total profil is 20 * 0.05
+        # For exemple, a share costs 20 euros with profit 5% so the total profil is 20 * 0.05
         line[2] = line[1] * line[2]
     lines = [tuple(line) for line in lines]
     return lines
 
 
 def read_csv_file(file_name):
-    """Read a csv file about actions' information. The format of the file:
+    """Read a csv file about shares' information. The format of the file:
 
-    Column1: action's name
-    Column2: cost of an action (in euro)
-    Column3: profit of an action after 2 years (in percentage)
+    Column1: share's name
+    Column2: cost of a share (in euro)
+    Column3: profit of a share after 2 years (in percentage)
 
     After reading, return information under a list of tuple like below:
-    [("Action-1", 20, 1), ("Action-2", 30, 3), ...]
+    [("share-1", 20, 1), ("share-2", 30, 3), ...]
     Here:
-     - cost of an action is transformed from string to int
-     - profit of an action is calculated by multiplying action cost with action profit value
+     - cost of a share is transformed from string to int
+     - profit of a share is calculated by multiplying share cost with share profit value
     """
 
     percentage_str = "%"
@@ -61,49 +64,49 @@ def read_csv_file(file_name):
 
     with open(file_name, encoding='utf-8') as csvfile:
         lines = csv.DictReader(csvfile)
-        actions = list(lines)
+        shares = list(lines)
 
-    for action in actions:
-        action['profit'] = float(action['profit'].replace(percentage_str, ''))
-        action['price'] = int(action['price'])
+    for share in shares:
+        share['profit'] = float(share['profit'].replace(percentage_str, ''))
+        share['price'] = int(share['price'])
 
-    list_of_actions = [
-        (action['name'], action['price'], action['price'] * action['profit'] * percentage_value)
-        for action in actions
+    list_of_shares = [
+        (share['name'], share['price'], share['price'] * share['profit'] * percentage_value)
+        for share in shares
     ]
 
-    return list_of_actions
+    return list_of_shares
 
 
-def read_cleaned_dataset(action_file):
+def read_cleaned_dataset(share_file):
     """Read then transform data to ready to use for the resolution of different methods.
 
-    In particular, for dynamic programming method, cost of each action must be an integer.
+    In particular, for dynamic programming method, cost of each share must be an integer.
     Therefore, price must be multiplied with 100 in this case to become an integer.
     """
-    if not file_exists(action_file):
-        raise f'File not found {action_file}'
+    if not file_exists(share_file):
+        raise f'File not found {share_file}'
 
-    with open(action_file, 'r') as file:
+    with open(share_file, 'r') as file:
         lines = csv.DictReader(file)
         array = list(lines)
 
-    list_of_actions = [
+    list_of_shares = [
         (a['name'], int(float(a['price']) * 100), float(a['price']) * float(a['profit'])) for a in
         array]
-    return list_of_actions
+    return list_of_shares
 
 
 def get_total_profit(selection):
-    """Get total profit of actions from a selection of actions. """
+    """Get total profit of shares from a selection of shares. """
 
-    return sum([action[2] for action in selection])
+    return sum([share[2] for share in selection])
 
 
 def get_total_cost(selection):
-    """Get total cost of actions from a selection of actions. """
+    """Get total cost of shares from a selection of shares. """
 
-    return sum([action[1] for action in selection])
+    return sum([share[1] for share in selection])
 
 
 def save_file(file_name_to_save, solution):
@@ -111,32 +114,32 @@ def save_file(file_name_to_save, solution):
 
     with open(file_name_to_save, 'w') as file:
         file.write('name, price, profit \n')
-        for action in solution:
-            file.write(f'{str(action)}\n')
+        for share in solution:
+            file.write(f'{str(share)}\n')
 
         file.write('\n')
         file.write(f'Total cost: {get_total_cost(solution)}\n')
         file.write(f'Total profit: {get_total_profit(solution)}\n')
 
 
-def save_solution_to_file(action_file, total_cost_max, method):
-    """Get solution from brute force method."""
+def save_solution_to_file(share_file, total_cost_max, method):
+    """Save solution to a file."""
 
-    if ".txt" in action_file:
-        actions = read_text_file(action_file)
-    elif ".csv" in action_file and "20" in action_file:
-        actions = read_csv_file(action_file)
-    elif "dataset" in action_file:
-        print(action_file)
-        actions = read_cleaned_dataset(action_file)
+    if ".txt" in share_file:
+        shares = read_text_file(share_file)
+    elif ".csv" in share_file and "20" in share_file:
+        shares = read_csv_file(share_file)
+    elif "dataset" in share_file:
+        print(share_file)
+        shares = read_cleaned_dataset(share_file)
     else:
         raise "File not found."
 
-    solution = method(actions, total_cost_max)
+    solution = method(shares, total_cost_max)
 
     # Create a file name to save output from the input file name and method resolution selected.
-    file_name_to_save = action_file.split(".")[0].replace("input/", "output/") \
-                        + "_" + f'{method.__name__}' + ".txt"
+    input_name = share_file.split(".")[0]
+    output_name = input_name.replace("input/", "output/") + "_" + f'{method.__name__}' + ".txt "
 
-    save_file(file_name_to_save, solution)
-    print(f'See the result in the file: {file_name_to_save}')
+    save_file(output_name, solution)
+    print(f'See the result in the file: {output_name}')
