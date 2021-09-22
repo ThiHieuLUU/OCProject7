@@ -1,4 +1,7 @@
-"""In this module, brute force method is implemented to solve problem of buying shares."""
+#! /usr/bin/venv python3
+# coding: utf-8
+
+"""In this module, brute force algorithm is implemented to solve problem of buying shares."""
 
 import time
 
@@ -15,7 +18,7 @@ def brute_force(list_of_shares, total_cost_max):
     For each combination, calculate the total cost and the total profit to take the best solution
     under the constraint: maximize the profit while the total cost doesn't exceed a given value.
     """
-    start = time.perf_counter()
+    start = time.perf_counter()  # To measure time calculating
 
     nbr_of_share_types = len(list_of_shares)
     nbr_of_combinations = 2 ** nbr_of_share_types
@@ -40,7 +43,7 @@ def brute_force(list_of_shares, total_cost_max):
             if get_total_cost(combination) <= total_cost_max:
                 solution = combination
 
-    end = time.perf_counter()
+    end = time.perf_counter()  # To measure time calculating
     print(f'Brute force takes {end - start} seconds')
     return solution
 

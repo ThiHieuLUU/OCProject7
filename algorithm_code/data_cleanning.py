@@ -1,3 +1,6 @@
+#! /usr/bin/venv python3
+# coding: utf-8
+
 """In this module, dataset will be cleaned by removing duplicated share's name, negative price
 or negative profit.
 """

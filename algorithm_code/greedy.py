@@ -1,4 +1,7 @@
-"""In this module, greedy method is implemented to solve problem of buying shares. """
+#! /usr/bin/venv python3
+# coding: utf-8
+
+"""In this module, greedy algorithm is implemented to solve problem of buying shares. """
 
 import os
 import time
@@ -25,14 +28,17 @@ def greedy(list_of_shares, total_cost_max):
     in percentage) is sorted in descending order and added in the solution in function of
     the cost reminder.
     """
-    start = time.perf_counter()
+
+    start = time.perf_counter()  # To measure time calculating
     list_of_shares_sorted = sort_shares(list_of_shares)
     total_cost = 0
     total_profit = 0
     index = 0
     shares_len = len(list_of_shares_sorted)
     selection = []
-    while total_cost <= total_cost_max and index < shares_len:
+    while index < shares_len and total_cost <= total_cost_max:
+        # While the total_cost doesn't exceed the total_cost_max, the selection can be added more
+        # share from the sorted list.
         rest = total_cost_max - total_cost
         share = list_of_shares_sorted[index]
         share_cost = share[1]
@@ -43,7 +49,7 @@ def greedy(list_of_shares, total_cost_max):
             total_profit = total_profit + share_profit
         index = index + 1
 
-    end = time.perf_counter()
+    end = time.perf_counter()  # To measure time calculating
     print(f'Greedy takes {end - start} seconds')
     return selection
 
@@ -59,10 +65,10 @@ def greedy_for_20_shares():
     save_solution_to_file(share_file, total_cost_max, method)
 
 
-def greedy_for_dataset_testing():
+def greedy_for_dataset():
     """Solve problem with shares in dataset after cleaning."""
 
-    total_cost_max = 500 * 100
+    total_cost_max = 500 * 100  # Expressed in cents -> compatible with data of dynamic programming
     share_file = input(
         "Please enter file name (/input/dataset1_Python+P7_cleaned.csv or "
         "/input/dataset2_Python+P7_cleaned.csv): "
@@ -80,6 +86,6 @@ if __name__ == '__main__':
     if which_dataset == 1:
         greedy_for_20_shares()
     elif which_dataset == 2:
-        greedy_for_dataset_testing()
+        greedy_for_dataset()
     else:
-        raise "Select is not compatible."
+        raise "The dataset is not in the list proposed!"

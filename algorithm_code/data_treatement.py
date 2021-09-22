@@ -1,3 +1,6 @@
+#! /usr/bin/venv python3
+# coding: utf-8
+
 """In this module, some functionalities used for different algorithms will be implemented,
 such as: read data from a file, save data to a file or calculate the total cost, the total profit.
 """
@@ -78,16 +81,16 @@ def read_csv_file(file_name):
     return list_of_shares
 
 
-def read_cleaned_dataset(share_file):
+def read_cleaned_dataset(file_name):
     """Read then transform data to ready to use for the resolution of different methods.
 
     In particular, for dynamic programming method, cost of each share must be an integer.
     Therefore, price must be multiplied with 100 in this case to become an integer.
     """
-    if not file_exists(share_file):
-        raise f'File not found {share_file}'
+    if not file_exists(file_name):
+        raise f'File not found {file_name}'
 
-    with open(share_file, 'r') as file:
+    with open(file_name, 'r') as file:
         lines = csv.DictReader(file)
         array = list(lines)
 
@@ -122,23 +125,22 @@ def save_file(file_name_to_save, solution):
         file.write(f'Total profit: {get_total_profit(solution)}\n')
 
 
-def save_solution_to_file(share_file, total_cost_max, method):
+def save_solution_to_file(file_name, total_cost_max, method):
     """Save solution to a file."""
 
-    if ".txt" in share_file:
-        shares = read_text_file(share_file)
-    elif ".csv" in share_file and "20" in share_file:
-        shares = read_csv_file(share_file)
-    elif "dataset" in share_file:
-        print(share_file)
-        shares = read_cleaned_dataset(share_file)
+    if ".txt" in file_name:
+        shares = read_text_file(file_name)
+    elif ".csv" in file_name and "20" in file_name:
+        shares = read_csv_file(file_name)
+    elif "dataset" in file_name:
+        shares = read_cleaned_dataset(file_name)
     else:
         raise "File not found."
 
     solution = method(shares, total_cost_max)
 
     # Create a file name to save output from the input file name and method resolution selected.
-    input_name = share_file.split(".")[0]
+    input_name = file_name.split(".")[0]
     output_name = input_name.replace("input/", "output/") + "_" + f'{method.__name__}' + ".txt "
 
     save_file(output_name, solution)
