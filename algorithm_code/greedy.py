@@ -3,12 +3,9 @@
 
 """In this module, greedy algorithm is implemented to solve problem of buying shares. """
 
-import os
 import time
 
 from data_treatement import save_solution_to_file
-
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def sort_shares(list_of_shares):
@@ -58,9 +55,7 @@ def greedy_for_20_shares():
     """Solve problem with 20 shares."""
 
     total_cost_max = 500
-    share_file = input(
-        "Please enter file name (/input/20_shares.txt or /input/20_shares.csv): ")
-    share_file = SCRIPT_DIR + share_file
+    share_file = input("Please enter file name (input/20_shares.txt or input/20_shares.csv): ")
     method = greedy
     save_solution_to_file(share_file, total_cost_max, method)
 
@@ -70,11 +65,9 @@ def greedy_for_dataset():
 
     total_cost_max = 500 * 100  # Expressed in cents -> compatible with data of dynamic programming
     share_file = input(
-        "Please enter file name (/input/dataset1_Python+P7_cleaned.csv or "
-        "/input/dataset2_Python+P7_cleaned.csv): "
+        "Please enter file name (input/dataset1_Python+P7_cleaned.csv or "
+        "input/dataset2_Python+P7_cleaned.csv): "
     )
-
-    share_file = SCRIPT_DIR + share_file
     method = greedy
     save_solution_to_file(share_file, total_cost_max, method)
 

@@ -5,11 +5,8 @@
 shares. """
 
 import time
-import os
 
 from data_treatement import save_solution_to_file
-
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def dynamic_programming(list_of_shares, total_cost_max):
@@ -76,8 +73,7 @@ def dynamic_programming_for_20_shares():
     """Solve problem with 20 shares."""
 
     total_cost_max = 500
-    share_file = input("Please enter file name (/input/20_shares.txt or /input/20_shares.csv): ")
-    share_file = SCRIPT_DIR + share_file
+    share_file = input("Please enter file name (input/20_shares.txt or input/20_shares.csv): ")
     method = dynamic_programming
     save_solution_to_file(share_file, total_cost_max, method)
 
@@ -87,11 +83,9 @@ def dynamic_programming_for_dataset_testing():
 
     total_cost_max = 500 * 100  # To transform cost from euro to cents.
     share_file = input(
-        "Please enter file name (/input/dataset1_Python+P7_cleaned.csv or "
-        "/input/dataset2_Python+P7_cleaned.csv): "
+        "Please enter file name (input/dataset1_Python+P7_cleaned.csv or "
+        "input/dataset2_Python+P7_cleaned.csv): "
     )
-
-    share_file = SCRIPT_DIR + share_file
     method = dynamic_programming
     save_solution_to_file(share_file, total_cost_max, method)
 
