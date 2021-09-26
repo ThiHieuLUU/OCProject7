@@ -137,11 +137,13 @@ def save_solution_to_file(file_name, total_cost_max, method):
     else:
         raise "File not found."
 
+    print(f'Number of shares: {len(shares)}')
+
     solution = method(shares, total_cost_max)
 
     # Create a file name to save output from the input file name and method resolution selected.
     input_name = file_name.split(".")[0]
-    output_name = input_name.replace("input/", "output/") + "_" + f'{method.__name__}' + ".txt "
+    output_name = input_name.replace("input/", "output/") + "_" + f'{method.__name__}' + ".txt"
 
     save_file(output_name, solution)
     print(f'See the result in the file: {output_name}')
